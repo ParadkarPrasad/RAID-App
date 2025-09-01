@@ -24,7 +24,6 @@ const createRisk = async (projectId, newRisk) => {
   const config = {
     headers: { Authorization: token },
   }
-  // console.log(config)
   const res = await axios.post(`${baseUrl}/projects/${projectId}/risks`, newRisk, config)
   console.log('Created risk response:', res);
   return res.data
@@ -44,11 +43,6 @@ const updateRisk = async (riskId, projectId, updatedRisk) => {
 }
 
 const deleteRisk = async (projectId, riskId) => {
-  // if (!riskId) {
-  //   throw new Error("Risk ID is missing.");
-  // }
-
-  // console.log("Making DELETE request for riskId:", riskId);
   const config = {
     headers: { Authorization: token },
   }

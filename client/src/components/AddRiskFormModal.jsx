@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { X } from 'lucide-react';
 const AddRiskFormModal = ({ closeRiskPage, onCreateRisk, onUpdateRisk, editingRisk }) => {
   const riskModalRef = useRef()
@@ -8,18 +8,6 @@ const AddRiskFormModal = ({ closeRiskPage, onCreateRisk, onUpdateRisk, editingRi
   const probabilityRef = useRef()
   const impactRef = useRef()
   const categoryRef = useRef()
-
-
-  // useEffect(() => {
-  //   if (editingRisk) {
-  //     titleRef.current.value = editingRisk.title;
-  //     descriptionRef.current.value = editingRisk.description;
-  //     statusRef.current.value = editingRisk.status;
-  //     probabilityRef.current.value = editingRisk.probability;
-  //     impactRef.current.value = editingRisk.impact;
-  //     categoryRef.current.value = editingRisk.category;
-  //   }
-  // }, [editingRisk]);
 
 
   const handleSubmit = (e) => {
@@ -34,8 +22,6 @@ const AddRiskFormModal = ({ closeRiskPage, onCreateRisk, onUpdateRisk, editingRi
       category: categoryRef.current.value
     }
 
-    console.log('Form data being submitted:', newRisk);
-    // onCreateRisk(newRisk)
     if (editingRisk) {
       onUpdateRisk(editingRisk.id, newRisk)
     } else {

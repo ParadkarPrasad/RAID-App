@@ -13,11 +13,26 @@ const Risks = () => {
   const [showRiskModal, setRiskModal] = useState(false)
   // Track the edit form
   const [editingRisk, setEditingRisk] = useState(null);
+
+  // To get the project name
+  const [projectName, setProjectName] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { projectId } = useParams()
+  const { items: projects = [] } = useSelector(state => state.projects)
+  console.log(projects)
   const { risks } = useSelector(state => state.risks)
-  console.log("All risks:", risks)
+
+  // Retrieve the project name and to set it
+
+  useEffect(() => {
+    if (projects.length > 0 && projectId) {
+      const project = projects.find(p => String(p.id) === String(projectId))
+      if (project) {
+        setProjectName(project.name)
+      }
+    }
+  }, [projects, projectId])
 
   // fetch all the risks
 
@@ -55,7 +70,7 @@ const Risks = () => {
       <main className='max-w-7xl mx-auto px-4'>
         <div className='flex space-between gap-3 mt-6'>
           <button className='font-medium rounded-md flex gap-2' onClick={backNavigation}><MoveLeft />Back to dashboard</button>
-          <p>Project Title</p>
+          <p>{projectName}</p>
         </div>
 
         {/* Buttons div for tabs to switch between RAID logs */}
