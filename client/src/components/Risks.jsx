@@ -70,7 +70,7 @@ const Risks = () => {
       <main className='max-w-7xl mx-auto px-4'>
         <div className='flex space-between gap-3 mt-6'>
           <button className='font-medium rounded-md flex gap-2' onClick={backNavigation}><MoveLeft />Back to dashboard</button>
-          <p>{projectName}</p>
+          <p className='font-bold text-xl'>{projectName}</p>
         </div>
 
         {/* Buttons div for tabs to switch between RAID logs */}
@@ -92,7 +92,7 @@ const Risks = () => {
           risks.length > 0 ? (
             <div className='grid grid-cols-1 lg:grid-cols-1 mt-4'>
               {risks.map(risk => (
-                <div className='rounded-lg shadow-sm transition-shadow' key={risk.id}>
+                <div className='rounded-lg shadow-md border-gray-100 transition-shadow mb-4' key={risk.id}>
                   <div className='flex justify-between mt-4 px-4'>
                     <h3 className='font-semibold text-sm'>{risk.title}</h3>
                     <div className='flex gap-2 items-center '>
