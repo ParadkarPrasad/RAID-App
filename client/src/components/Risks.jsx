@@ -7,6 +7,7 @@ import { X, TriangleAlert } from 'lucide-react';
 import { Plus } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom'
 import AddRiskFormModal from './AddRiskFormModal.jsx';
+import Tab from './Tab.jsx';
 
 
 const Risks = () => {
@@ -72,14 +73,7 @@ const Risks = () => {
           <button className='font-medium rounded-md flex gap-2' onClick={backNavigation}><MoveLeft />Back to dashboard</button>
           <p className='font-bold text-xl'>{projectName}</p>
         </div>
-
-        {/* Buttons div for tabs to switch between RAID logs */}
-        <div className='flex mt-6 gap-72 h-8 justify-center items-center bg-gray-200'>
-          <button className="cursor-pointer">Risks</button>
-          <button className="cursor-pointer">Actions</button>
-          <button className="cursor-pointer">Issues</button>
-          <button className="cursor-pointer">Dependency</button>
-        </div>
+        <Tab />
 
         <div className='flex justify-between mt-6'>
           <p className='font-bold'>Risks</p>

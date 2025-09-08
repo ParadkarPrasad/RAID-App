@@ -9,6 +9,7 @@ import Risks from "./components/Risks";
 import Assumptions from "./components/Assumptions"
 import Issues from "./components/Issues"
 import Dependencies from "./components/Dependencies"
+import Tab from "./components/Tab";
 // import { useDispatch } from "react-redux";
 // import { loginThunk } from "./reducers/authReducer"
 
