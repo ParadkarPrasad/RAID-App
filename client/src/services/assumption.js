@@ -24,7 +24,7 @@ const createAssumption = async (projectId, newAssumption) => {
   return res.data
 }
 
-const updateAssumption = async (projectId, assumptionId, updatedAssumption) => {
+const updateAssumption = async (assumptionId, projectId, updatedAssumption) => {
   const config = {
     headers: { Authorization: token },
   }
