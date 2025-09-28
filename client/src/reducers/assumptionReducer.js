@@ -29,6 +29,7 @@ export const createAssumption = createAsyncThunk(
 export const updateAssumption = createAsyncThunk(
   'assumptions/update',
   async ({ assumptionId, projectId, updatedAssumption }, thunkAPI) => {
+    console.log("Updating assumption:", assumptionId, updatedAssumption)
     try {
       return await assumptionService.updateAssumption(assumptionId, projectId, updatedAssumption)
     }
@@ -74,7 +75,7 @@ const assumptionSlice = createSlice({
         state.error = null
       })
       .addCase(fetchAssumptions.fulfilled, (state, action) => {
-        state.risks = action.payload
+        state.assumptions = action.payload
         state.loading = false
       })
       .addCase(fetchAssumptions.rejected, (state, action) => {
@@ -95,7 +96,7 @@ const assumptionSlice = createSlice({
       })
 
       // Delete
-      .addCase(updateAssumption.fulfilled, (state, action) => {
+      .addCase(deleteAssumption.fulfilled, (state, action) => {
         state.assumptions = state.assumptions.filter((assumption) => assumption.id !== action.payload.id)
       })
   }

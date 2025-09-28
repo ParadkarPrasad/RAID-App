@@ -10,12 +10,8 @@ import Assumptions from "./components/Assumptions"
 import Issues from "./components/Issues"
 import Dependencies from "./components/Dependencies"
 import Tab from "./components/Tab";
-// import { useDispatch } from "react-redux";
-// import { loginThunk } from "./reducers/authReducer"
 
 function App() {
-  // const dispatch = useDispatch()
-
   const token = localStorage.getItem('token');
   if (token) {
     projectService.setToken(token);
@@ -30,7 +26,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/projects/:projectId/risks" element={<Risks />} />
-            <Route path="/assumptions" element={<Assumptions />} />
+            <Route path="/projects/:projectId/assumptions" element={<Assumptions />} />
             <Route path="/issues" element={<Issues />} />
             <Route path="/dependencies" element={<Dependencies />} />
           </Route>

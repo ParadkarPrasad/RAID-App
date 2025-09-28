@@ -8,7 +8,7 @@ export const store = configureStore({
     auth: authReducer,
     projects: projectReducer,
     risks: riskReducer,
-    assummptions: assumptionReducer
+    assumptions: assumptionReducer
 
   },
 });

@@ -21,7 +21,6 @@ const Risks = () => {
   const dispatch = useDispatch()
   const { projectId } = useParams()
   const { items: projects = [] } = useSelector(state => state.projects)
-  console.log(projects)
   const { risks } = useSelector(state => state.risks)
 
   // Retrieve the project name and to set it
