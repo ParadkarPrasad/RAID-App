@@ -5,21 +5,21 @@ const middleware = require("../utils/middleware")
 
 // Get all assumptions for a particular project
 assumptionRouter.get("/projects/:projectId/assumptions", middleware.userExtractor, async (req, res) => {
-  console.log("➡️ GET /projects/:projectId/assumptions hit", req.params)
+  // console.log("➡️ GET /projects/:projectId/assumptions hit", req.params)
   try {
     const { projectId } = req.params
     const assumptions = await Assumption.find({ projects: projectId })
     console.log("   Found assumptions:", assumptions.length)
     res.json(assumptions)
   } catch (err) {
-    console.error("❌ Error in GET assumptions:", err.message)
+    // console.error("❌ Error in GET assumptions:", err.message)
     res.status(500).json({ err: "Failed to fetch the assumptiosn for the project" })
   }
 })
 
 // Create or post a new assumtpion
 assumptionRouter.post("/projects/:projectId/assumptions", middleware.userExtractor, middleware.checkProjectOwner, async (req, res) => {
-  console.log("➡️ POST /projects/:projectId/assumptions hit", req.params, req.body)
+  // console.log("➡️ POST /projects/:projectId/assumptions hit", req.params, req.body)
   try {
     const { projectId } = req.params
     const { title, description, status, priority, category } = req.body
@@ -33,7 +33,7 @@ assumptionRouter.post("/projects/:projectId/assumptions", middleware.userExtract
       projects: [projectId]
     })
     const savedAssumption = await newAssumption.save()
-    console.log("   ✅ Saved assumption:", savedAssumption)
+    // console.log("   ✅ Saved assumption:", savedAssumption)
     const updatedProject = await Project.findByIdAndUpdate(
       projectId,
       { $push: { assumptions: savedAssumption._id } },
@@ -41,13 +41,13 @@ assumptionRouter.post("/projects/:projectId/assumptions", middleware.userExtract
     )
 
     if (!updatedProject) {
-      console.error("❌ Project not found for ID:", projectId)
+      // console.error("❌ Project not found for ID:", projectId)
       return res.status(404).json({ error: "Project not found" })
     }
     res.status(201).json(savedAssumption)
   }
   catch (error) {
-    console.error("❌ Error in POST assumptions:", error)
+    // console.error("❌ Error in POST assumptions:", error)
     res.status(500).json({ error: error.message || "Failed to add a new assumption" })
   }
 })
@@ -82,9 +82,9 @@ assumptionRouter.delete("/projects/:projectId/assumptions/:assumptionId", middle
     if (!assumptionId) {
       return res.status(400).json({ err: "Mission Assumption ID" })
     }
-    console.log("Deleting assumption with ID:", assumptionId)
+    // console.log("Deleting assumption with ID:", assumptionId)
     const assumption = await Assumption.findById(assumptionId)
-    console.log("Found assumption:", assumption)
+    // console.log("Found assumption:", assumption)
     if (!assumption) {
       return res.status(404).json({ error: "Assumption not found" });
     }

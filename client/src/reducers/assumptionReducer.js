@@ -6,7 +6,6 @@ export const fetchAssumptions = createAsyncThunk(
   async (projectId, thunkAPI) => {
     try {
       const assumptions = await assumptionService.getAll(projectId)
-      console.log("All assumptions:", assumptions)
       return assumptions
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
@@ -29,7 +28,6 @@ export const createAssumption = createAsyncThunk(
 export const updateAssumption = createAsyncThunk(
   'assumptions/update',
   async ({ assumptionId, projectId, updatedAssumption }, thunkAPI) => {
-    console.log("Updating assumption:", assumptionId, updatedAssumption)
     try {
       return await assumptionService.updateAssumption(assumptionId, projectId, updatedAssumption)
     }
@@ -85,7 +83,6 @@ const assumptionSlice = createSlice({
 
       // Create
       .addCase(createAssumption.fulfilled, (state, action) => {
-        console.log('Assumption created with payload:', action.payload);
         state.assumptions = [...state.assumptions, action.payload]
       })
 
