@@ -80,7 +80,7 @@ assumptionRouter.delete("/projects/:projectId/assumptions/:assumptionId", middle
     const { assumptionId, projectId } = req.params
 
     if (!assumptionId) {
-      return res.status(400).json({ err: "Mission Assumption ID" })
+      return res.status(400).json({ err: "Missing Assumption ID" })
     }
     // console.log("Deleting assumption with ID:", assumptionId)
     const assumption = await Assumption.findById(assumptionId)
