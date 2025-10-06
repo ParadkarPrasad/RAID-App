@@ -27,7 +27,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/projects/:projectId/risks" element={<Risks />} />
             <Route path="/projects/:projectId/assumptions" element={<Assumptions />} />
-            <Route path="/issues" element={<Issues />} />
+            <Route path="/projects/:projectId/issues" element={<Issues />} />
             <Route path="/dependencies" element={<Dependencies />} />
           </Route>
         </Routes>

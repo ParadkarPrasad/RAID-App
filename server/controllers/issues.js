@@ -22,7 +22,10 @@ issuesRouter.post("/projects/:projectId/issues", middleware.userExtractor, middl
     const { projectId } = req.params
     const { title, description, status, severity, type } = req.body
 
-    const newIssues = newIssues({
+    console.log("Incoming projectId:", projectId);
+    console.log("Incoming body:", req.body);
+
+    const newIssue = newIssues({
       title,
       description,
       status,
@@ -30,7 +33,7 @@ issuesRouter.post("/projects/:projectId/issues", middleware.userExtractor, middl
       type,
       projects: [projectId]
     })
-    const saveIssue = await newIssues.save()
+    const saveIssue = await newIssue.save()
     const updateProject = await Project.findByIdAndUpdate(
       projectId,
       { $push: { issues: saveIssue._id } },
