@@ -25,7 +25,7 @@ issuesRouter.post("/projects/:projectId/issues", middleware.userExtractor, middl
     console.log("Incoming projectId:", projectId);
     console.log("Incoming body:", req.body);
 
-    const newIssue = newIssues({
+    const newIssue = new Issues({
       title,
       description,
       status,
@@ -34,6 +34,7 @@ issuesRouter.post("/projects/:projectId/issues", middleware.userExtractor, middl
       projects: [projectId]
     })
     const saveIssue = await newIssue.save()
+    console.log("✅ Saved issue", saveIssue)
     const updateProject = await Project.findByIdAndUpdate(
       projectId,
       { $push: { issues: saveIssue._id } },
@@ -45,6 +46,7 @@ issuesRouter.post("/projects/:projectId/issues", middleware.userExtractor, middl
     }
     res.status(201).json(saveIssue)
   } catch (error) {
+    console.error("❌ Error in POST issues:", error)
     res.status(500).json({ error: error.message || "Failed to add new issue" })
   }
 })

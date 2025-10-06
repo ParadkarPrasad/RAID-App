@@ -36,7 +36,7 @@ const AddAssumptionFormModal = ({ closeAssumptionPage, editingAssumption, onUpda
       <div ref={assumptionModalRef} onClick={onCloseForm} className='fixed inset-0 bg-gray-100 bg-opacity-10 backdrop-blur-sm flex justify-center items-center'>
         <div className='flex flex-col gap-5 text-black'>
           <div className='relative w-full max-w-md bg-white rounded-xl shadow-2xl p-6'>
-            <button onClick={onCloseForm} className='absolute top-3 right-3 text-gray-500 hover:text-black'><X size={30} /></button>
+            <button onClick={closeAssumptionPage} className='absolute top-3 right-3 text-gray-500 hover:text-black'><X size={30} /></button>
             <form className="w-full flex flex-col justify-start" onSubmit={handleSubmit}>
               <h4 className='font-medium text-sm'>{editingAssumption ? 'Edit Assumption' : 'Add  Assumption'}</h4>
               <div className='mt-4'>

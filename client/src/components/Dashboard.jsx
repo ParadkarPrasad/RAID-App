@@ -59,7 +59,7 @@ const Dashboard = () => {
                   <div className='p-6 pt-0'>
                     <div className='grid grid-cols-2 gap-4 text-sm'>
                       <div className='flex items-center space-x-2'><span>Risks: {project.riskCount ?? 0}</span></div>
-                      <div className='flex items-center space-x-2'><span>Assumptions: {project.assumptionCount ?? 0}</span></div>
+                      <div className='flex items-center space-x-2'><span>Assumptions: {project.assumptionsCount ?? 0}</span></div>
                       <div className='flex items-center space-x-2'><span>Issues: {project.issuesCount ?? 0}</span></div>
                       <div className='flex items-center space-x-2'><span>Dependencies: {project.dependenciesCount ?? 0}</span></div>
                     </div>

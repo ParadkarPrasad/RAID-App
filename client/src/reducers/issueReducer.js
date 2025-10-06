@@ -28,7 +28,7 @@ export const updateIssue = createAsyncThunk(
   'issues/updateIssue',
   async ({ issueId, projectId, updatedIssue }, thunkAPI) => {
     try {
-      return await issueService.createIssue(issueId, projectId, updatedIssue)
+      return await issueService.updatedIssue(issueId, projectId, updatedIssue)
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
     }

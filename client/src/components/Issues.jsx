@@ -36,10 +36,12 @@ const Issues = () => {
 
   const handlecreateIssue = (issueData) => {
     dispatch(createIssue({ projectId, newIssue: issueData }))
+    setIssueModal(false)
   }
 
   const handleupdateIssue = (issueId, updateData) => {
-    dispatch(updateIssue({ projectId, issueId, updatedData: updateData }))
+    dispatch(updateIssue({ projectId, issueId, updatedIssue: updateData }))
+    setIssueModal(false)
     setEditIssue(null)
   }
 
@@ -85,7 +87,7 @@ const Issues = () => {
                     <span>Category:<button className='mx-1 px-2 rounded-md font-semibold shadow-md'>{issue.type}</button></span>
                   </div>
                   <div className='mt-4 px-4 flex justify-end border-t-2 border-gray-200'>
-                    <button className='text-sm text-blue-400 py-2 hover:text-blue-600'>Click to Edit</button>
+                    <button onClick={() => { setEditIssue(issue); setIssueModal(true) }} className='text-sm text-blue-400 py-2 hover:text-blue-600'>Click to Edit</button>
                   </div>
                 </div>
               ))}
